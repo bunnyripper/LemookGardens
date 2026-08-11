@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Book Accommodation - Lemook Gardens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body>
+
+    <div class="site-chrome">
+        <a class="wordmark" href="{{ url_for('main.index') }}">Lemook Gardens</a>
+        <span class="wordmark-sub">Eco-inspired haven in Eldoret</span>
+        <div class="leaf-divider"><span class="leaf-divider__mark"></span></div>
+    </div>
+
+    <div class="booking-shell">
+        <div class="card">
+            <h1>Book Accommodation</h1>
+            <p class="page-intro">Fill in your details to book a room at Lemook Gardens.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash"><strong>{{ category }}:</strong> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                {{ form.hidden_tag() }}
+
+                <fieldset>
+                    <legend>Guest Details</legend>
+                    <p>
+                        {{ form.guest_name.label }}
+                        {{ form.guest_name(size=40) }}
+                        {% for error in form.guest_name.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.guest_email.label }}
+                        {{ form.guest_email(size=40) }}
+                        {% for error in form.guest_email.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.guest_phone.label }}
+                        {{ form.guest_phone(size=40) }}
+                        {% for error in form.guest_phone.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Room Details</legend>
+                    <p>
+                        {{ form.room_type.label }}
+                        {{ form.room_type() }}
+                        {% for error in form.room_type.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.check_in.label }}
+                        {{ form.check_in() }}
+                        {% for error in form.check_in.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.check_out.label }}
+                        {{ form.check_out() }}
+                        {% for error in form.check_out.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.adults.label }}
+                        {{ form.adults() }}
+                        {% for error in form.adults.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.children.label }}
+                        {{ form.children() }}
+                        {% for error in form.children.errors %}
+                            <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                </fieldset>
+
+                <p>
+                    {{ form.special_requests.label }}
+                    {{ form.special_requests(rows=4, cols=40) }}
+                    {% for error in form.special_requests.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p class="form-actions"><button type="submit">Submit Booking</button></p>
+            </form>
+
+            <p class="link-row">
+                <a href="{{ url_for('main.book_event') }}">Book an Event instead</a>
+            </p>
+            <p class="link-row link-row--muted">
+                <a href="{{ url_for('main.index') }}">&larr; Back to Home</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

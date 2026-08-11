@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book an Event · Lemook Gardens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking-flow.css') }}">
+</head>
+<body>
+
+    <section class="hero" id="hero">
+
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <a href="{{ url_for('main.events') }}" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to events
+            </a>
+
+            <div class="form-card" id="formCard">
+
+                <div class="form-header">
+                    <h1 id="eventTitle">Event</h1>
+                    <p class="room-description" id="eventDescription"></p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="flash flash-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST" id="eventBookingForm">
+                    {{ form.hidden_tag() }}
+
+                    {{ form.event_type(id="eventTypeInput") }}
+
+                    <div class="form-group">
+                        <label for="guest_name">{{ form.guest_name.label.text }}</label>
+                        {{ form.guest_name(id="guest_name", placeholder="Your full name") }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guest_email">{{ form.guest_email.label.text }}</label>
+                            {{ form.guest_email(id="guest_email", placeholder="you@example.com") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="guest_phone">{{ form.guest_phone.label.text }}</label>
+                            {{ form.guest_phone(id="guest_phone", placeholder="+254 7XX XXX XXX") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event_date">{{ form.event_date.label.text }}</label>
+                        {{ form.event_date(id="event_date", type="date") }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guest_count">{{ form.guest_count.label.text }}</label>
+                        {{ form.guest_count(id="guest_count", type="number", min=1) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special_requests">{{ form.special_requests.label.text }}</label>
+                        {{ form.special_requests(id="special_requests", rows="3", placeholder="Any special requests or notes...") }}
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-check"></i> Submit Booking
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const events = {
+                wedding: {
+                    name: 'Wedding',
+                    description: 'Say your vows surrounded by gardens. Full-day access and setup support for your special day.',
+                    image: 'event-wedding.jpg'
+                },
+                engagement: {
+                    name: 'Engagement',
+                    description: 'An intimate garden setting for the moment you say yes.',
+                    image: 'event-engagement.jpg'
+                },
+                party: {
+                    name: 'Party',
+                    description: 'Birthdays, anniversaries, and celebrations with space to gather and unwind.',
+                    image: 'event-party.jpg'
+                },
+                corporate: {
+                    name: 'Corporate Event',
+                    description: 'Team-building, retreats, and offsites in a quiet, natural setting.',
+                    image: 'event-corporate.jpg'
+                },
+                other: {
+                    name: 'Other',
+                    description: "Have something else in mind? Tell us about it and we'll help plan it.",
+                    image: 'event-other.jpg'
+                }
+            };
+
+            const heroBg = document.getElementById('heroBg');
+            const eventTitle = document.getElementById('eventTitle');
+            const eventDescription = document.getElementById('eventDescription');
+            const eventTypeInput = document.getElementById('eventTypeInput');
+
+            const params = new URLSearchParams(window.location.search);
+            const requested = params.get('event');
+            const eventKey = (requested && events[requested]) ? requested : 'wedding';
+
+            const evt = events[eventKey];
+            heroBg.style.backgroundImage = `url('/static/images/${evt.image}')`;
+            eventTitle.textContent = evt.name;
+            eventDescription.textContent = evt.description;
+            eventTypeInput.value = eventKey;
+
+        })();
+    </script>
+
+</body>
+</html>

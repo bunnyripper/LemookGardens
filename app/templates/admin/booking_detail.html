@@ -1,0 +1,84 @@
+{% extends "admin/base.html" %}
+{% from "admin/_icons.html" import icon %}
+
+{% block title %}Booking #{{ booking.id }}{% endblock %}
+
+{% block topbar %}
+    <div>
+        <a href="{{ url_for('admin.dashboard') }}" style="display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ink-soft); text-decoration:none; margin-bottom:6px;">
+            {{ icon('back', 'icon') }} Back to dashboard
+        </a>
+        <h1>Booking <span class="mono">#{{ booking.id }}</span></h1>
+    </div>
+    <span class="status status-{{ booking.status }}" style="font-size:13px; padding:6px 14px;">{{ booking.status|title }}</span>
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-head">
+            <h2>Guest details</h2>
+        </div>
+        <div class="panel-body">
+            <table style="border:none;">
+                <tbody>
+                    <tr><td style="border:none; padding:6px 0; width:160px; color:var(--ink-soft);">Guest name</td><td style="border:none; padding:6px 0;">{{ booking.guest_name }}</td></tr>
+                    <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Email</td><td style="border:none; padding:6px 0;">{{ booking.guest_email }}</td></tr>
+                    <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Phone</td><td style="border:none; padding:6px 0;" class="mono">{{ booking.guest_phone }}</td></tr>
+                    <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Booking type</td><td style="border:none; padding:6px 0;">{{ booking.booking_type|title }}</td></tr>
+
+                    {% if booking.booking_type == 'accommodation' %}
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Room</td><td style="border:none; padding:6px 0;">{{ booking.room_type|replace('_', ' ')|title }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Check-in</td><td style="border:none; padding:6px 0;" class="mono">{{ booking.check_in.strftime('%d %b %Y') }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Check-out</td><td style="border:none; padding:6px 0;" class="mono">{{ booking.check_out.strftime('%d %b %Y') }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Adults</td><td style="border:none; padding:6px 0;">{{ booking.adults }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Children</td><td style="border:none; padding:6px 0;">{{ booking.children }}</td></tr>
+                    {% else %}
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Event type</td><td style="border:none; padding:6px 0;">{{ booking.event_type|title }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Event date</td><td style="border:none; padding:6px 0;" class="mono">{{ booking.check_in.strftime('%d %b %Y') }}</td></tr>
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Guest count</td><td style="border:none; padding:6px 0;">{{ booking.guest_count }}</td></tr>
+                    {% endif %}
+
+                    {% if booking.special_requests %}
+                        <tr><td style="border:none; padding:6px 0; color:var(--ink-soft); vertical-align:top;">Special requests</td><td style="border:none; padding:6px 0;">{{ booking.special_requests }}</td></tr>
+                    {% endif %}
+
+                    <tr><td style="border:none; padding:6px 0; color:var(--ink-soft);">Created</td><td style="border:none; padding:6px 0;" class="mono">{{ booking.created_at.strftime('%d %b %Y at %H:%M') }}</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+        <div class="panel">
+            <div class="panel-head"><h2>Update status</h2></div>
+            <div class="panel-body">
+                <form method="POST" action="{{ url_for('admin.update_booking_status', booking_id=booking.booking_id) }}">
+                    {% if form %}{{ form.hidden_tag() }}{% endif %}
+                    <select name="status" style="max-width:none; margin-bottom:12px;">
+                        <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
+                        <option value="confirmed" {% if booking.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                        <option value="cancelled" {% if booking.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                        <option value="completed" {% if booking.status == 'completed' %}selected{% endif %}>Completed</option>
+                    </select>
+                    <button type="submit">Update status</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-head"><h2>Contact guest</h2></div>
+            <div class="panel-body" style="display:flex; gap:10px;">
+                <a href="https://wa.me/{{ booking.guest_phone|replace('+', '') }}" target="_blank" rel="noopener" class="btn btn-outline">
+                    {{ icon('whatsapp', 'icon') }} WhatsApp
+                </a>
+                <a href="mailto:{{ booking.guest_email }}?subject=Booking%20Inquiry%20-%20Lemook%20Gardens" class="btn btn-outline">
+                    {{ icon('mail', 'icon') }} Email
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

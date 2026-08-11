@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lemook Gardens | A Place to Stay, Gather & Experience</title>
+    <meta
+        name="description"
+        content="Discover Lemook Gardens — accommodation, events and memorable experiences in a beautiful natural setting."
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+     <script src="{{url_for("static",filename="js/index.js")}}"defer></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="/" class="site-logo">
+                Lemook Gardens
+            </a>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/rooms">Rooms</a>
+                <a href="/event">Events</a>
+                <a href="#about">About</a>
+                <a href="#location">Contact</a>
+            </div>
+
+            <a href="/booking" class="nav-book-button">
+                Book Now
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+  <!-- Hero -->
+<section class="hero" aria-labelledby="hero-title">
+
+    <div class="hero-content">
+
+        <p class="hero-eyebrow">
+            Lemook Gardens
+        </p>
+
+        <h1 id="hero-title">
+            A little farther from the city.<br>
+            A little closer to peace.
+        </h1>
+
+        <div class="hero-actions">
+            <a href="#introduction" class="button button-primary">
+                Explore Lemook
+            </a>
+
+            <a href="/booking" class="button button-secondary">
+                Book Your Stay
+            </a>
+        </div>
+
+    </div>
+
+    <a href="#introduction" class="hero-scroll" aria-label="Scroll to discover more">
+        <span class="scroll-icon" aria-hidden="true"></span>
+    </a>
+
+</section>
+
+
+        <!-- Introduction -->
+<section id="introduction" class="intro-section" aria-labelledby="intro-title">
+    <div class="intro-content">
+
+        <p class="section-eyebrow">Welcome to Lemook</p>
+
+        <h2 id="intro-title">A place to slow down</h2>
+
+        <p>
+            Lemook Gardens is a peaceful destination away from the pace of the city,
+            offering a place to stay, dine, gather and enjoy the outdoors.
+            Whether you're here for a quiet getaway, a meal with friends or a special
+            occasion, Lemook gives you space to relax and enjoy the moment.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Accommodation -->
+<section id="accommodation" class="accommodation-section" aria-labelledby="accommodation-title">
+
+    <div class="section-heading">
+        <p class="section-eyebrow">Stay at Lemook</p>
+        <h2 id="accommodation-title">Choose your stay</h2>
+
+        <p>
+            From cosy spaces surrounded by the gardens to comfortable private cottages,
+            Lemook offers different ways to make your stay your own. Find a space that
+            suits you, settle in and enjoy a little time away from the city.
+        </p>
+    </div>
+
+    <div class="accommodation-featured">
+
+        <!-- Bamboo Hut -->
+        <article class="accommodation-feature">
+
+            <div class="accommodation-image">
+                <img
+                    src="{{ url_for('static', filename='images/cottage-1.jpg') }}"
+                    alt="Bamboo Hut at Lemook Gardens"
+                >
+            </div>
+
+            <div class="accommodation-details">
+                <p class="accommodation-type">Accommodation</p>
+
+                <h3>Bamboo Hut</h3>
+
+                <p>
+                  Peaceful, eco-friendly hut surrounded by nature. Perfect for couples seeking tranquility.
+                </p>
+
+                <div class="accommodation-footer">
+                    <span class="accommodation-price">
+                        From KSh 3500 / night
+                    </span>
+
+                    <a href="/rooms" class="button button-primary">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+
+        <!-- Garden Cottage -->
+        <article class="accommodation-feature">
+
+            <div class="accommodation-image">
+                <img
+                    src="{{ url_for('static', filename='images/cottage-2.jpeg') }}"
+                    alt="Garden Cottage at Lemook Gardens"
+                >
+            </div>
+
+            <div class="accommodation-details">
+                <p class="accommodation-type">Accommodation</p>
+
+                <h3>Garden Cottage</h3>
+
+                <p>
+                    Overlooking our lush gardens. Private veranda and extra space for relaxation.
+                </p>
+
+                <div class="accommodation-footer">
+                    <span class="accommodation-price">
+                        From KES 4,200 / night
+                    </span>
+
+                    <a href="/rooms" class="button button-primary">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+
+    <a href="/rooms" class="section-link">
+        Explore all accommodation
+        <span aria-hidden="true">→</span>
+    </a>
+
+</section>
+<!-- Dining -->
+<section id="dining" class="dining-section" aria-labelledby="dining-title">
+
+    <div class="section-heading">
+        <p class="section-eyebrow">Taste Lemook</p>
+
+        <h2 id="dining-title">Dine at Lemook</h2>
+
+        <p>
+            Enjoy good food in a relaxed setting, with spaces to dine indoors,
+            outdoors or surrounded by the gardens. Whether you're sharing a meal,
+            enjoying a picnic or simply taking your time, there's room to make it your own.
+        </p>
+    </div>
+
+    <div class="dining-showcase">
+
+        <div class="dining-slideshow">
+
+            <img
+                src="{{ url_for('static', filename='images/dining-1.jpg') }}"
+                alt="Dining at Lemook Gardens"
+                class="dining-slide active"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/dining-2.jpg') }}"
+                alt="Dining experience at Lemook Gardens"
+                class="dining-slide"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/dining-3.jpg') }}"
+                alt="Outdoor dining at Lemook Gardens"
+                class="dining-slide"
+            >
+
+        </div>
+
+    </div>
+
+    <a href="/dining" class="section-link">
+        Explore Dining
+        <span aria-hidden="true">→</span>
+    </a>
+
+</section>
+
+
+<!-- Events -->
+<section id="events" class="events-section" aria-labelledby="events-title">
+
+    <div class="section-heading">
+        <p class="section-eyebrow">Gather at Lemook</p>
+
+        <h2 id="events-title">Celebrate together</h2>
+
+        <p>
+            From weddings and celebrations to corporate gatherings and special occasions,
+            Lemook offers spaces where people can come together, share a moment and make it their own.
+        </p>
+    </div>
+
+    <div class="events-showcase">
+
+        <div class="events-image">
+
+            <img
+                src="{{ url_for('static', filename='images/event-wedding.jpg') }}"
+                alt="Wedding event at Lemook Gardens"
+                class="event-image active"
+                data-event="wedding"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/event-celebration.jpg') }}"
+                alt="Celebration at Lemook Gardens"
+                class="event-image"
+                data-event="celebration"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/event-corporate.jpg') }}"
+                alt="Corporate event at Lemook Gardens"
+                class="event-image"
+                data-event="corporate"
+            >
+
+        </div>
+
+        <div class="events-options">
+
+            <button class="event-option active" data-event="wedding">
+                <span>01</span>
+                <strong>Weddings</strong>
+            </button>
+
+            <button class="event-option" data-event="celebration">
+                <span>02</span>
+                <strong>Celebrations</strong>
+            </button>
+
+            <button class="event-option" data-event="corporate">
+                <span>03</span>
+                <strong>Corporate Events</strong>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="events-actions">
+
+        <a href="/event" class="button button-secondary">
+            Explore Events
+        </a>
+
+        <a href="/event" class="button button-primary">
+            Book an Event
+        </a>
+
+    </div>
+
+</section>
+<!-- Gallery / Experience -->
+<section id="experience" class="experience-section" aria-labelledby="experience-title">
+
+    <div class="section-heading">
+        <p class="section-eyebrow">Experience Lemook</p>
+
+        <h2 id="experience-title">There's more to discover.</h2>
+
+        <p>
+            From quiet corners in the gardens to shared meals and memorable gatherings,
+            take a glimpse at the moments that make Lemook what it is.
+        </p>
+    </div>
+
+    <div class="experience-grid">
+
+        <div class="experience-photo experience-photo-tall">
+            <img
+                src="{{ url_for('static', filename='images/gallery-1.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </div>
+
+        <div class="experience-photo">
+            <img
+                src="{{ url_for('static', filename='images/gallery-2.jpg') }}"
+                alt="Lemook Gardens experience"
+            >
+        </div>
+
+        <div class="experience-photo">
+            <img
+                src="{{ url_for('static', filename='images/gallery-3.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </div>
+
+        <div class="experience-photo experience-photo-wide">
+            <img
+                src="{{ url_for('static', filename='images/gallery-4.jpg') }}"
+                alt="The gardens at Lemook Gardens"
+            >
+        </div>
+
+    </div>
+
+    <a href="/gallery" class="section-link">
+        Explore the Gallery
+        <span aria-hidden="true">→</span>
+    </a>
+
+</section>
+<!-- About -->
+<section id="about" class="about-section" aria-labelledby="about-title">
+
+    <div class="about-content">
+
+        <p class="section-eyebrow">Our Story</p>
+
+        <h2 id="about-title">A place with a story worth discovering.</h2>
+
+        <p>
+            Lemook Gardens was created as a place to step away from the pace
+            of everyday life and enjoy a little more time outdoors. What began
+            as a simple garden destination has grown into a place where people
+            come to stay, dine, celebrate and spend time together.
+        </p>
+
+        <p>
+            Today, Lemook remains a peaceful escape from the city, with spaces
+            designed for quiet moments, shared experiences and special occasions.
+        </p>
+
+    </div>
+
+</section>
+<section id="location" class="location-section" aria-labelledby="location-title">
+
+    <div class="location-content">
+
+        <p class="section-eyebrow">Visit Lemook</p>
+
+        <h2 id="location-title">Find Lemook</h2>
+
+        <p>
+            A peaceful escape just outside the city. Find us, plan your visit
+            and come spend some time at Lemook Gardens.
+        </p>
+
+        <div class="contact-details">
+
+            <div class="contact-item">
+                <span class="contact-label">Address</span>
+                <p>Kapseret,Eldoret,Kenya</p>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <p>info@lemookgardens.com</p>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <p>+254 722 722 393</p>
+            </div>
+
+        </div>
+
+        <a href=""
+           class="button button-primary"
+           target="_blank"
+           rel="noopener">
+            Get Directions
+        </a>
+
+    </div>
+
+    <div class="location-map">
+        <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.358408372!2d35.168569!3d0.514311!2m3!1f0!2f768!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1781018777c7f8f1%3A0x9e7c6b5a8e4c6f3!2sKapseret%20%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m1!1sen!2s"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+</iframe>
+    </div>
+
+</section>
+<!-- Final CTA -->
+<section class="final-cta" aria-labelledby="final-cta-title">
+
+    <div class="final-cta-content">
+
+        <p class="section-eyebrow">Your time at Lemook</p>
+
+        <h2 id="final-cta-title">Ready to slow down?</h2>
+
+        <p>
+            Leave the pace of the city behind and make some time for yourself
+            at Lemook Gardens.
+        </p>
+
+        <a href="/booking" class="button button-primary">
+            Book Your Stay
+        </a>
+
+    </div>
+
+</section>
+
+
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer class="site-footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">
+                Lemook Gardens
+            </a>
+
+            <p>
+                A peaceful place to slow down,
+                reconnect and enjoy the moment.
+            </p>
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <nav aria-label="Footer navigation">
+
+                <a href="/">Home</a>
+
+                <a href="#accommodation">
+                    Accommodation
+                </a>
+
+                <a href="#dining">
+                    Dining
+                </a>
+
+                <a href="#events">
+                    Events
+                </a>
+
+                <a href="#gallery">
+                    Gallery
+                </a>
+
+                <a href="#about">
+                    Our Story
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <a href="mailto:YOUR_EMAIL">
+                info@lemookgardens.com
+            </a>
+
+            <a href="tel:YOUR_PHONE">
+                +254 722 722 393
+            </a>
+
+            <p>
+                Kapseret,Eldoret,Kenya
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Lemook Gardens. All rights reserved.
+        </p>
+
+        <div class="footer-legal">
+
+            <a href="/privacy">
+                Privacy Policy
+            </a>
+
+            <a href="/terms">
+                Terms & Conditions
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

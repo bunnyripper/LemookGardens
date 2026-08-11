@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Accommodation · Lemook Gardens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site2.css') }}">
+</head>
+<body>
+
+    <section class="hero" id="hero">
+
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <a href="{{ url_for('main.rooms') }}" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to rooms
+            </a>
+
+            <div class="form-card" id="formCard">
+
+                <div class="form-header">
+                    <h1 id="roomTitle">Room</h1>
+                    <p class="room-description" id="roomDescription"></p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="flash flash-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST" id="bookingForm">
+                    {{ form.hidden_tag() }}
+
+                    {{ form.room_type(id="roomTypeInput") }}
+
+                    <div class="form-group">
+                        <label for="guest_name">{{ form.guest_name.label.text }}</label>
+                        {{ form.guest_name(id="guest_name", placeholder="Your full name") }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guest_email">{{ form.guest_email.label.text }}</label>
+                            {{ form.guest_email(id="guest_email", placeholder="you@example.com") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="guest_phone">{{ form.guest_phone.label.text }}</label>
+                            {{ form.guest_phone(id="guest_phone", placeholder="+254 7XX XXX XXX") }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="check_in">{{ form.check_in.label.text }}</label>
+                            {{ form.check_in(id="check_in", type="date") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="check_out">{{ form.check_out.label.text }}</label>
+                            {{ form.check_out(id="check_out", type="date") }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adults">{{ form.adults.label.text }}</label>
+                            {{ form.adults(id="adults", type="number", min=1, value=1) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="children">{{ form.children.label.text }}</label>
+                            {{ form.children(id="children", type="number", min=0, value=0) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special_requests">{{ form.special_requests.label.text }}</label>
+                        {{ form.special_requests(id="special_requests", rows="3", placeholder="Any special requests or notes...") }}
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-check"></i> Submit Booking
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const rooms = {
+                bamboo_hut: {
+                    name: 'Bamboo Hut',
+                    description: 'Peaceful, eco-friendly hut surrounded by nature. Perfect for couples seeking tranquility.',
+                    image: 'cottage-1.jpg'
+                },
+                garden_cottage: {
+                    name: 'Garden Cottage',
+                    description: 'Overlooking our lush gardens. Private veranda and extra space for relaxation.',
+                    image: 'cottage-2.jpeg'
+                },
+                family_suite: {
+                    name: 'Family Suite',
+                    description: "Spacious suite with kids' area. Direct access to the playground.",
+                    image: 'cottage-3.jpeg'
+                }
+            };
+
+            const heroBg = document.getElementById('heroBg');
+            const roomTitle = document.getElementById('roomTitle');
+            const roomDescription = document.getElementById('roomDescription');
+            const roomTypeInput = document.getElementById('roomTypeInput');
+
+            const params = new URLSearchParams(window.location.search);
+            const requestedRoom = params.get('room');
+            const roomKey = (requestedRoom && rooms[requestedRoom]) ? requestedRoom : 'bamboo_hut';
+
+            const room = rooms[roomKey];
+            heroBg.style.backgroundImage = `url('/static/images/${room.image}')`;
+            roomTitle.textContent = room.name;
+            roomDescription.textContent = room.description;
+            roomTypeInput.value = roomKey;
+
+        })();
+    </script>
+
+</body>
+</html>

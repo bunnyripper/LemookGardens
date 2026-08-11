@@ -1,0 +1,221 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dining.css') }}">
+    <script src="{{url_for("static",filename="js/index.js")}}"defer></script>
+</head>
+<section class="gallery-hero">
+
+    <div class="gallery-hero-content">
+
+        <p class="section-eyebrow">Experience Lemook</p>
+
+        <h1>Take a look around.</h1>
+
+    </div>
+
+</section>
+
+
+<!-- Gallery -->
+<main class="gallery-page">
+
+    <div class="gallery-grid">
+
+        <button class="gallery-item" data-index="0">
+            <img
+                src="{{ url_for('static', filename='images/gallery-01.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="1">
+            <img
+                src="{{ url_for('static', filename='images/gallery-02.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="2">
+            <img
+                src="{{ url_for('static', filename='images/gallery-03.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="3">
+            <img
+                src="{{ url_for('static', filename='images/gallery-04.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="4">
+            <img
+                src="{{ url_for('static', filename='images/gallery-05.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="5">
+            <img
+                src="{{ url_for('static', filename='images/gallery-06.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="6">
+            <img
+                src="{{ url_for('static', filename='images/gallery-07.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="7">
+            <img
+                src="{{ url_for('static', filename='images/gallery-08.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="8">
+            <img
+                src="{{ url_for('static', filename='images/gallery-09.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="9">
+            <img
+                src="{{ url_for('static', filename='images/gallery-10.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="10">
+            <img
+                src="{{ url_for('static', filename='images/gallery-11.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="11">
+            <img
+                src="{{ url_for('static', filename='images/gallery-12.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="12">
+            <img
+                src="{{ url_for('static', filename='images/gallery-13.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="13">
+            <img
+                src="{{ url_for('static', filename='images/gallery-14.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="14">
+            <img
+                src="{{ url_for('static', filename='images/gallery-15.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="15">
+            <img
+                src="{{ url_for('static', filename='images/gallery-16.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="16">
+            <img
+                src="{{ url_for('static', filename='images/gallery-17.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="17">
+            <img
+                src="{{ url_for('static', filename='images/gallery-18.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="18">
+            <img
+                src="{{ url_for('static', filename='images/gallery-19.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+        <button class="gallery-item" data-index="19">
+            <img
+                src="{{ url_for('static', filename='images/gallery-20.jpg') }}"
+                alt="Lemook Gardens"
+            >
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- Lightbox -->
+<div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close gallery">
+        &times;
+    </button>
+
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">
+        &#10094;
+    </button>
+
+    <div class="lightbox-content">
+
+        <img
+            id="lightbox-image"
+            src=""
+            alt=""
+        >
+
+        <p id="lightbox-counter">1 / 20</p>
+
+    </div>
+
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">
+        &#10095;
+    </button>
+
+</div>
+
+
+<!-- Final CTA -->
+<section class="gallery-cta">
+
+    <div class="gallery-cta-content">
+
+        <p class="section-eyebrow">Experience Lemook</p>
+
+        <h2>Seen enough?</h2>
+
+        <p>
+            Come experience the peace and beauty of Lemook Gardens for yourself.
+        </p>
+
+        <a href="/booking" class="button button-primary">
+            Book Your Stay
+        </a>
+
+    </div>
+
+</section>
+</html>

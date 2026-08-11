@@ -1,0 +1,63 @@
+{% from "admin/_icons.html" import icon %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{% block title %}Admin{% endblock %} · Lemook Gardens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+<div class="app">
+
+    <div class="sidebar">
+        <div class="brand">
+            <div>
+                <div class="brand-word">Lemook</div>
+                <div class="brand-sub">Gardens · Admin</div>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a href="{{ url_for('admin.dashboard') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.dashboard' }}">
+                {{ icon('dashboard') }} Dashboard
+            </a>
+            <a href="{{ url_for('admin.settings') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.settings' }}">
+                {{ icon('settings') }} Settings
+            </a>
+            <a href="{{ url_for('admin.announcements') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.announcemets' }}">
+                {{ icon('announcement') }} Announcements
+            </a>
+        </div>
+
+        <div class="sidebar-foot">
+            <a href="{{ url_for('main.index') }}">{{ icon('back', 'icon') }} View site</a>
+            <a href="{{ url_for('admin.logout') }}" style="margin-top:10px;">{{ icon('logout', 'icon') }} Log out</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="topbar">
+            {% block topbar %}
+                <h1>{% block page_title %}{% endblock %}</h1>
+            {% endblock %}
+        </div>
+
+        <div class="content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

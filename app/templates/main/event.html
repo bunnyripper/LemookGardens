@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site2.css') }}">
+</head>
+<section class="page-header">
+    <h1>Events</h1>
+    <div class="page-header-rule"></div>
+</section>
+
+<div class="room-cards">
+
+    <div class="room-card">
+        <img src="/static/images/event-wedding.jpg" alt="Weddings" class="room-card-img">
+        <div class="room-card-body">
+            <h3>Weddings</h3>
+            <p class="room-card-desc">Say your vows surrounded by gardens. Full-day access and setup support for your special day.</p>
+            <div class="room-card-footer">
+                <span class="room-card-price">From KES 45,000</span>
+                <a href="{{ url_for('main.book_event') }}?event=wedding" class="room-card-link">Book &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-card">
+        <img src="/static/images/event-engagement.jpeg" alt="Engagement" class="room-card-img">
+        <div class="room-card-body">
+            <h3>Engagement</h3>
+            <p class="room-card-desc">An intimate garden setting for the moment you say yes.</p>
+            <div class="room-card-footer">
+                <span class="room-card-price">From KES 25,000</span>
+                <a href="{{ url_for('main.book_event') }}?event=engagement" class="room-card-link">Book &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-card">
+        <img src="/static/images/event-party.jpg" alt="Party" class="room-card-img">
+        <div class="room-card-body">
+            <h3>Party</h3>
+            <p class="room-card-desc">Birthdays, anniversaries, and celebrations with space to gather and unwind.</p>
+            <div class="room-card-footer">
+                <span class="room-card-price">From KES 18,000</span>
+                <a href="{{ url_for('main.book_event') }}?event=party" class="room-card-link">Book &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-card">
+        <img src="/static/images/event-corporate.jpg" alt="Corporate Event" class="room-card-img">
+        <div class="room-card-body">
+            <h3>Corporate Event</h3>
+            <p class="room-card-desc">Team-building, retreats, and offsites in a quiet, natural setting.</p>
+            <div class="room-card-footer">
+                <span class="room-card-price">From KES 30,000</span>
+                <a href="{{ url_for('main.book_event') }}?event=corporate" class="room-card-link">Book &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-card">
+        <img src="/static/images/gallery-06.jpg" alt="Other" class="room-card-img">
+        <div class="room-card-body">
+            <h3>Other</h3>
+            <p class="room-card-desc">Have something else in mind? Tell us about it and we'll help plan it.</p>
+            <div class="room-card-footer">
+                <span class="room-card-price">Custom quote</span>
+                <a href="{{ url_for('main.book_event') }}?event=other" class="room-card-link">Book &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Booking - Lemook Gardens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body>
+
+    <div class="booking-shell">
+        <div class="card">
+            <h1>Lemook Gardens</h1>
+            <p class="page-intro">Eco-inspired haven in Eldoret</p>
+
+            <ul class="choice-list">
+                <li>
+                    <a class="choice-card" href="{{ url_for('main.rooms') }}">
+                        <span>
+                            <span class="choice-card__title">Book Accommodation</span>
+                            <span class="choice-card__hint">Rooms, check-in &amp; check-out dates</span>
+                        </span>
+                        <span class="choice-card__arrow">&rarr;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="choice-card" href="{{ url_for('main.event') }}">
+                        <span>
+                            <span class="choice-card__title">Book an Event</span>
+                            <span class="choice-card__hint">Weddings, parties &amp; corporate events</span>
+                        </span>
+                        <span class="choice-card__arrow">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

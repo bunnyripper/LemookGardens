@@ -1,0 +1,82 @@
+{% extends "admin/base.html" %}
+{% from "admin/_icons.html" import icon %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-label">Pending {{ icon('pending') }}</div>
+            <div class="stat-value">{{ pending_count }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Confirmed {{ icon('confirmed') }}</div>
+            <div class="stat-value">{{ confirmed_count }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Cancelled {{ icon('cancelled') }}</div>
+            <div class="stat-value">{{ cancelled_count }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Completed {{ icon('completed') }}</div>
+            <div class="stat-value">{{ completed_count }}</div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-head">
+            <h2>All bookings</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest</th>
+                    <th>Type</th>
+                    <th>Room / event</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td class="mono">#{{ booking.booking_id }}</td>
+                    <td>{{ booking.guest_name }}</td>
+                    <td>{{ booking.booking_type|title }}</td>
+                    <td>
+                        {% if booking.booking_type == 'accommodation' %}
+                            {{ booking.room_type|replace('_', ' ')|title }}
+                        {% else %}
+                            {{ booking.event_type|title }}
+                        {% endif %}
+                    </td>
+                    <td class="mono">{{ booking.check_in.strftime('%d %b %Y') }}</td>
+                    <td>
+                        <span class="status status-{{ booking.status }}">{{ booking.status|title }}</span>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin.booking_detail', booking_id=booking.booking_id) }}" class="btn btn-outline">
+                            View {{ icon('external', 'icon') }}
+                        </a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{url_for("admin.delete_bookings",booking_id=booking.booking_id)}}"
+                        onsubmit="return confirm('Are you sure you want to delete this booking?');">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr class="empty-row">
+                    <td colspan="7">No bookings yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

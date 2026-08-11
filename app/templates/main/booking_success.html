@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Booking confirmed - Lemook Gardens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body>
+
+    <div class="site-chrome">
+        <a class="wordmark" href="{{ url_for('main.index') }}">Lemook Gardens</a>
+        <span class="wordmark-sub">Eco-inspired haven in Eldoret</span>
+        <div class="leaf-divider"><span class="leaf-divider__mark"></span></div>
+    </div>
+
+    <div class="booking-shell">
+        <div class="card">
+            <span class="confirm-badge">&check;</span>
+            <h1>Booking Received</h1>
+            <p class="page-intro">
+                Thank you, <strong>{{ booking_guest_name }}</strong>! Your booking reference is
+                <span class="booking-ref">#{{ booking.booking_id }}</span>.
+            </p>
+
+            <h3>Booking Details</h3>
+            <dl class="booking-details">
+                <div>
+                    <dt>Type</dt>
+                    <dd>{{ booking.booking_type|title }}</dd>
+                </div>
+                {% if booking.booking_type == "accommodation" %}
+                    <div>
+                        <dt>Room</dt>
+                        <dd>{{ booking.room_type|replace("_", " ")|title }}</dd>
+                    </div>
+                    <div>
+                        <dt>Check-in</dt>
+                        <dd>{{ booking.check_in.strftime("%d %b %Y") }}</dd>
+                    </div>
+                    <div>
+                        <dt>Check-out</dt>
+                        <dd>{{ booking.check_out.strftime("%d %b %Y") }}</dd>
+                    </div>
+                    <div>
+                        <dt>Adults</dt>
+                        <dd>{{ booking.adults }}</dd>
+                    </div>
+                    {% if booking.children %}
+                        <div>
+                            <dt>Children</dt>
+                            <dd>{{ booking.children }}</dd>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div>
+                        <dt>Event</dt>
+                        <dd>{{ booking.event_type|title }}</dd>
+                    </div>
+                    <div>
+                        <dt>Event Date</dt>
+                        <dd>{{ booking.check_in.strftime('%d %b %Y') }}</dd>
+                    </div>
+                    <div>
+                        <dt>Guests</dt>
+                        <dd>{{ booking.guest_count }}</dd>
+                    </div>
+                {% endif %}
+                {% if booking.special_requests %}
+                    <div>
+                        <dt>Special Requests</dt>
+                        <dd>{{ booking.special_requests }}</dd>
+                    </div>
+                {% endif %}
+            </dl>
+
+            <p class="page-intro" style="margin-top: 1.75rem;">
+                We'll contact you shortly to confirm your booking.
+            </p>
+
+            <p class="link-row link-row--muted">
+                <a href="{{ url_for('main.index') }}">&larr; Back Home</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

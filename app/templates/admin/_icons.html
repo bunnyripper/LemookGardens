@@ -1,0 +1,32 @@
+{# Self-hosted outline icons. Import with: {% from "admin/_icons.html" import icon %}
+   Usage: {{ icon('dashboard') }} or {{ icon('pending', class_='icon') }} #}
+
+{% macro icon(name, class_='icon') %}
+  {% if name == 'dashboard' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg>
+  {% elif name == 'settings' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 01-4 0v-.09A1.7 1.7 0 009 19.36a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.64 15a1.7 1.7 0 00-1.55-1H3a2 2 0 010-4h.09A1.7 1.7 0 004.64 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.64a1.7 1.7 0 001-1.55V3a2 2 0 014 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.36 9c.14.36.5 1.09 1.55 1H21a2 2 0 010 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+  {% elif name == 'logout' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+  {% elif name == 'back' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+  {% elif name == 'whatsapp' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2z"/></svg>
+  {% elif name == 'mail' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+  {% elif name == 'pending' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+  {% elif name == 'confirmed' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+  {% elif name == 'cancelled' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+  {% elif name == 'completed' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h11"/></svg>
+  {% elif name == 'calendar' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+  {% elif name == 'external' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+  {% elif name == 'announcement' %}
+    <svg class="{{ class_ }}" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 001 1h2l4.5 4a1 1 0 001.5-.8V6.8a1 1 0 00-1.5-.8L6 10H4a1 1 0 00-1 1z"/><path d="M15 9a3 3 0 010 6"/><path d="M18 6a7 7 0 010 12"/></svg>
+  {% endif %}
+{% endmacro %}

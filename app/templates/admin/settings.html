@@ -1,0 +1,41 @@
+{% extends "admin/base.html" %}
+{% from "admin/_icons.html" import icon %}
+
+{% block title %}Settings{% endblock %}
+{% block page_title %}Settings{% endblock %}
+
+{% block content %}
+
+    <form method="POST" style="max-width:560px;">
+        {% if form %}{{ form.hidden_tag() }}{% endif %}
+
+        <fieldset>
+            <legend>WhatsApp notifications</legend>
+            <label class="toggle-wrap" style="margin-bottom:10px;">
+                <input type="checkbox" name="twilio_enabled" {{ 'checked' if twilio_enabled }}>
+                <span class="toggle"></span>
+            </label>
+            <span style="margin-left:10px; font-size:13.5px; vertical-align:2px;">Enable WhatsApp notifications</span>
+
+            <p style="margin:14px 0 4px;">
+                <a href="https://console.twilio.com" target="_blank" rel="noopener" class="btn btn-outline">
+                    {{ icon('whatsapp', 'icon') }} Manage Twilio account {{ icon('external', 'icon') }}
+                </a>
+            </p>
+            <small style="color:var(--ink-soft); font-size:12px;">Cost: ~500 KES/month. You manage your own Twilio account.</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dashboard auto-refresh</legend>
+            <select name="auto_refresh" style="max-width:220px;">
+                <option value="0" {{ 'selected' if auto_refresh == 0 }}>Off</option>
+                <option value="30" {{ 'selected' if auto_refresh == 30 }}>30 seconds</option>
+                <option value="60" {{ 'selected' if auto_refresh == 60 or not auto_refresh }}>60 seconds</option>
+                <option value="120" {{ 'selected' if auto_refresh == 120 }}>2 minutes</option>
+            </select>
+        </fieldset>
+
+        <button type="submit">Save settings</button>
+    </form>
+
+{% endblock %}

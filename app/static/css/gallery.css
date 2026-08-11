@@ -1,0 +1,299 @@
+/* ========================================
+   GALLERY HERO
+======================================== */
+
+.gallery-hero{
+    min-height:460px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:100px 8vw;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(15,36,26,0.58),
+            rgba(15,36,26,0.58)
+        ),
+        url("/static/images/gallery-hero.jpg")
+        center/cover no-repeat;
+}
+
+.gallery-hero-content{
+    max-width:700px;
+}
+
+.gallery-hero .section-eyebrow{
+    color:var(--gold-light);
+}
+
+.gallery-hero h1{
+    color:var(--white);
+    font-family:"Fraunces", serif;
+    font-size:clamp(44px, 6vw, 68px);
+    font-weight:500;
+    line-height:1.1;
+}
+
+
+/* ========================================
+   GALLERY GRID
+======================================== */
+
+.gallery-page{
+    padding:100px 6vw;
+    background:var(--ivory);
+}
+
+.gallery-grid{
+    max-width:1300px;
+    margin:0 auto;
+
+    columns:3 280px;
+    column-gap:18px;
+}
+
+.gallery-item{
+    display:block;
+    width:100%;
+
+    margin:0 0 18px;
+    padding:0;
+
+    border:0;
+    background:none;
+
+    cursor:pointer;
+
+    break-inside:avoid;
+    overflow:hidden;
+
+    border-radius:14px;
+}
+
+.gallery-item img{
+    display:block;
+    width:100%;
+    height:auto;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.3s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.025);
+}
+
+
+/* ========================================
+   LIGHTBOX
+======================================== */
+
+.gallery-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:40px 80px;
+
+    background:rgba(15,36,26,0.96);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.gallery-lightbox.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox-content{
+    max-width:90vw;
+    max-height:90vh;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+}
+
+.lightbox-content img{
+    display:block;
+
+    max-width:85vw;
+    max-height:82vh;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:8px;
+}
+
+#lightbox-counter{
+    margin:0;
+
+    color:var(--gold-light);
+
+    font-size:13px;
+    letter-spacing:0.08em;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+    position:absolute;
+
+    border:0;
+    background:none;
+
+    color:var(--cream);
+
+    cursor:pointer;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+    color:var(--gold-light);
+}
+
+.lightbox-close{
+    top:24px;
+    right:30px;
+
+    font-size:38px;
+}
+
+.lightbox-prev,
+.lightbox-next{
+    top:50%;
+    transform:translateY(-50%);
+
+    font-size:36px;
+}
+
+.lightbox-prev{
+    left:28px;
+}
+
+.lightbox-next{
+    right:28px;
+}
+
+
+
+
+.gallery-cta{
+    min-height:460px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:100px 8vw;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(15,36,26,0.72),
+            rgba(15,36,26,0.72)
+        ),
+        url("/static/images/gallery-cta.jpg")
+        center/cover no-repeat;
+}
+
+.gallery-cta-content{
+    max-width:680px;
+}
+
+.gallery-cta .section-eyebrow{
+    color:var(--gold-light);
+}
+
+.gallery-cta h2{
+    margin-bottom:22px;
+
+    color:var(--white);
+
+    font-family:"Fraunces", serif;
+    font-size:clamp(40px, 5vw, 60px);
+    font-weight:500;
+    line-height:1.1;
+}
+
+.gallery-cta p:not(.section-eyebrow){
+    max-width:560px;
+    margin:0 auto 32px;
+
+    color:rgba(250,247,240,0.88);
+
+    font-size:17px;
+    line-height:1.8;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width:800px){
+
+    .gallery-page{
+        padding:70px 5vw;
+    }
+
+    .gallery-grid{
+        columns:2 150px;
+        column-gap:10px;
+    }
+
+    .gallery-item{
+        margin-bottom:10px;
+        border-radius:10px;
+    }
+
+    .gallery-lightbox{
+        padding:30px 20px;
+    }
+
+    .lightbox-content img{
+        max-width:92vw;
+        max-height:78vh;
+    }
+
+    .lightbox-prev,
+    .lightbox-next{
+        font-size:28px;
+    }
+
+    .lightbox-prev{
+        left:10px;
+    }
+
+    .lightbox-next{
+        right:10px;
+    }
+
+    .lightbox-close{
+        top:15px;
+        right:18px;
+    }
+
+}

@@ -1,0 +1,53 @@
+{% extends "admin/base.html" %}
+{% from "admin/_icons.html" import icon %}
+
+{% block title %}Announcements{% endblock %}
+
+{% block topbar %}
+    <h1>Announcements</h1>
+    <a href="{{ url_for('admin.new_announcements') }}" class="btn">{{ icon('announcement', 'icon') }} New announcement</a>
+{% endblock %}
+
+{% block content %}
+
+    {% if announcements %}
+    <div class="announcement-grid">
+        {% for a in announcements %}
+        <div class="ann-card">
+            <div class="ann-thumb">
+                {% if a.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ a.image_filename) }}" alt="{{ a.title }}">
+                {% else %}
+                    <div class="ann-thumb-empty">{{ icon('announcement', 'icon') }}</div>
+                {% endif %}
+                <span class="status status-{{ 'confirmed' if a.is_active else 'completed' }} ann-status">
+                    {{ 'Active' if a.is_active else 'Inactive' }}
+                </span>
+            </div>
+
+            <div class="ann-body">
+                <h3 class="ann-title">{{ a.title }}</h3>
+                <p class="ann-content">{{ a.content }}</p>
+                <div class="ann-date mono">{{ a.created_at.strftime('%d %b %Y') }}</div>
+            </div>
+
+            <div class="ann-actions">
+                <a href="{{ url_for('admin.edit_announcement', id=a.id) }}" class="btn btn-outline">Edit</a>
+                <form method="POST" action="{{ url_for('admin.delete_announcement', id=a.id) }}"
+                      onsubmit="return confirm('Delete this announcement? This cannot be undone.');">
+                    {% if form %}{{ form.hidden_tag() }}{% endif %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="panel">
+        <div class="panel-body" style="text-align:center; color:var(--ink-soft); padding:48px 20px;">
+            No announcements yet. Create one to promote it on the homepage.
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

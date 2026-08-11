@@ -1,0 +1,49 @@
+<head>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/site2.css') }}">
+</head>
+<section class="accommodations">
+  <div class="page-header">
+    <h1>Accommodations</h1>
+    <div class="page-header-rule"></div>
+  </div>
+
+  <div class="room-cards">
+
+    <div class="room-card">
+      <img src="/static/images/cottage-1.jpg" alt="Bamboo Hut" class="room-card-img">
+      <div class="room-card-body">
+        <h3>Bamboo Hut</h3>
+        <p class="room-card-desc">Peaceful, eco-friendly hut surrounded by nature. Perfect for couples seeking tranquility.</p>
+        <div class="room-card-footer">
+          <span class="room-card-price">KES 3,500 <span>/ night</span></span>
+          <a href="{{ url_for('main.book_accommodation') }}?room=bamboo_hut" class="room-card-link">Book &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="/static/images/cottage-2.jpeg" alt="Garden Cottage" class="room-card-img">
+      <div class="room-card-body">
+        <h3>Garden Cottage</h3>
+        <p class="room-card-desc">Overlooking our lush gardens. Private veranda and extra space for relaxation.</p>
+        <div class="room-card-footer">
+          <span class="room-card-price">KES 4,200 <span>/ night</span></span>
+          <a href="{{ url_for('main.book_accommodation') }}?room=garden_cottage" class="room-card-link">Book &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="/static/images/cottage-3.jpeg" alt="Family Suite" class="room-card-img">
+      <div class="room-card-body">
+        <h3>Family Suite</h3>
+        <p class="room-card-desc">Spacious suite with kids' area. Direct access to the playground.</p>
+        <div class="room-card-footer">
+          <span class="room-card-price">KES 5,800 <span>/ night</span></span>
+          <a href="{{ url_for('main.book_accommodation') }}?room=family_suite" class="room-card-link">Book &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

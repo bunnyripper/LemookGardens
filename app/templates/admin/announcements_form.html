@@ -1,0 +1,113 @@
+{% extends "admin/base.html" %}
+{% from "admin/_icons.html" import icon %}
+
+{% block title %}{{ 'Edit' if announcement else 'New' }} announcement{% endblock %}
+
+{% block topbar %}
+    <div>
+        <a href="{{ url_for('admin.announcements') }}" style="display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ink-soft); text-decoration:none; margin-bottom:6px;">
+            {{ icon('back', 'icon') }} Back to announcements
+        </a>
+        <h1>{{ 'Edit announcement' if announcement else 'New announcement' }}</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST" enctype="multipart/form-data" style="max-width:560px;">
+        {% if form %}{{ form.hidden_tag() }}{% endif %}
+
+        <fieldset>
+            <legend>Details</legend>
+
+            <p>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="{{ announcement.title if announcement else '' }}" required>
+            </p>
+
+            <p>
+                <label for="content">Content</label>
+                <textarea id="content" name="content" rows="4" required>{{ announcement.content if announcement else '' }}</textarea>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Image</legend>
+
+            <div class="image-drop" id="imageDrop">
+                <div class="image-preview-wrap" id="previewWrap" {% if not (announcement and announcement.image_filename) %}style="display:none;"{% endif %}>
+                    <img id="previewImg" src="{{ url_for('static', filename='uploads/' ~ announcement.image_filename) if announcement and announcement.image_filename else '' }}" alt="">
+                    <button type="button" class="btn btn-outline" id="removePreview" style="margin-top:10px;">Remove image</button>
+                </div>
+
+                <div class="image-drop-empty" id="dropEmpty" {% if announcement and announcement.image_filename %}style="display:none;"{% endif %}>
+                    {{ icon('announcement', 'icon') }}
+                    <p>Drag an image here, or <span class="image-drop-link">browse</span></p>
+                    <small style="color:var(--ink-soft);">Leave empty to use a text-only banner</small>
+                </div>
+
+                <input type="file" id="image_filename" name="image_filename" accept="image/*" style="display:none;">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Visibility</legend>
+            <label class="toggle-wrap" style="margin-bottom:0;">
+                <input type="checkbox" name="is_active" {{ 'checked' if not announcement or announcement.is_active }}>
+                <span class="toggle"></span>
+            </label>
+            <span style="margin-left:10px; font-size:13.5px; vertical-align:2px;">Active — visible on the homepage</span>
+        </fieldset>
+
+        <button type="submit">{{ 'Save changes' if announcement else 'Create announcement' }}</button>
+    </form>
+
+<script>
+(function(){
+    var dropZone = document.getElementById('imageDrop');
+    var fileInput = document.getElementById('image_filename');
+    var previewWrap = document.getElementById('previewWrap');
+    var previewImg = document.getElementById('previewImg');
+    var dropEmpty = document.getElementById('dropEmpty');
+    var removeBtn = document.getElementById('removePreview');
+
+    dropZone.addEventListener('click', function(e){
+        if (e.target !== removeBtn) fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function(){
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e){
+                previewImg.src = e.target.result;
+                previewWrap.style.display = 'block';
+                dropEmpty.style.display = 'none';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    });
+
+    removeBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        fileInput.value = '';
+        previewImg.src = '';
+        previewWrap.style.display = 'none';
+        dropEmpty.style.display = 'flex';
+    });
+
+    ['dragover','dragleave','drop'].forEach(function(evt){
+        dropZone.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); });
+    });
+    dropZone.addEventListener('dragover', function(){ dropZone.classList.add('image-drop-active'); });
+    dropZone.addEventListener('dragleave', function(){ dropZone.classList.remove('image-drop-active'); });
+    dropZone.addEventListener('drop', function(e){
+        dropZone.classList.remove('image-drop-active');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            fileInput.files = e.dataTransfer.files;
+            fileInput.dispatchEvent(new Event('change'));
+        }
+    });
+})();
+</script>
+
+{% endblock %}

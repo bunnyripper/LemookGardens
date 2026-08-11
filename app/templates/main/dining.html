@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dining.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+<!-- Dining Hero -->
+<section class="dining-hero">
+
+    <div class="dining-hero-content">
+
+        <p class="section-eyebrow">Dining at Lemook</p>
+
+        <h1>Good food, relaxed surroundings.</h1>
+
+        <p>
+            Enjoy a selection of meals, drinks and bites in the peaceful
+            surroundings of Lemook Gardens.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Hot Drinks -->
+<section class="menu-section menu-section-light">
+
+    <div class="menu-photo">
+        <img
+            src="{{ url_for('static', filename='images/menu-hot-drinks-2.jpg') }}"
+            alt="Hot drinks served at Lemook Gardens"
+        >
+    </div>
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Start with something warm</p>
+
+        <h2>Hot Drinks</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Tea</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Black CSoffee</span>
+                <span>150</span>
+            </div>
+
+            <div class="menu-item">
+                <span>White Coffee</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Lemon Tea</span>
+                <span>50</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Chocolate Tea</span>
+                <span>50</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Black Tea</span>
+                <span>50</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Milk Packet</span>
+                <span>120</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Glass of Milk</span>
+                <span>70</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+</section>
+<!-- Cold Drinks -->
+<section class="menu-section menu-section-forest">
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Something refreshing</p>
+
+        <h2>Cold Drinks</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Mineral Water 500ml</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Mineral Water 1L</span>
+                <span>200</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Soda 300ml</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Delmonte</span>
+                <span>350</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Minute Maid</span>
+                <span>250</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+
+    <div class="menu-photo">
+
+        <img
+            src="{{ url_for('static', filename='images/menu-cold-drinks.jpg') }}"
+            alt="Cold drinks served at Lemook Gardens"
+        >
+
+    </div>
+
+</section>
+<!-- Snacks -->
+<section class="menu-section menu-section-ivory">
+
+    <div class="menu-photo">
+        <img
+            src="{{ url_for('static', filename='images/menu-snacks.jpg') }}"
+            alt="Snacks served at Lemook Gardens"
+        >
+    </div>
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Something to enjoy</p>
+
+        <h2>Snacks</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Sausages — Party</span>
+                <span>460</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Chicken Wings</span>
+                <span>400</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Bread Crumbs</span>
+                <span>500</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Fish Fingers</span>
+                <span>400</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Samosas — Party</span>
+                <span>200</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Toasted Bread</span>
+                <span>500</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+</section>
+
+<!-- Eggs -->
+<section class="menu-section menu-section-forest">
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Made your way</p>
+
+        <h2>Eggs</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Plain Omelette</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Spanish Omelette</span>
+                <span>150</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Scrambled Eggs</span>
+                <span>100</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Boiled Eggs</span>
+                <span>100</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+    <div class="menu-photo">
+
+        <img
+            src="{{ url_for('static', filename='images/menu-eggs.jpg') }}"
+            alt="Egg dishes served at Lemook Gardens"
+        >
+
+    </div>
+
+</section>
+<!-- Main Dishes -->
+<section class="menu-section menu-section-ivory menu-section-featured">
+
+    <div class="menu-photo">
+
+        <img
+            src="{{ url_for('static', filename='images/menu-main-dishes.jpg') }}"
+            alt="Main dishes served at Lemook Gardens"
+        >
+
+    </div>
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">From the kitchen</p>
+
+        <h2>Main Dishes</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Mbuzi — ¼ kg</span>
+                <span>400</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Mbuzi — ½ kg</span>
+                <span>800</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Mbuzi — 1 kg</span>
+                <span>1,400</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Kienyeji — ¼</span>
+                <span>—</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Kienyeji — ½</span>
+                <span>1,000</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Kienyeji — Full</span>
+                <span>2,000</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Broiler — ¼</span>
+                <span>300</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Broiler — ½</span>
+                <span>600</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Broiler — Full</span>
+                <span>1,200</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Fish Wet</span>
+                <span>800</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Fish Dry</span>
+                <span>800</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+</section>
+<!-- Accompaniments -->
+<section class="menu-section menu-section-forest">
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Complete your meal</p>
+
+        <h2>Accompaniments</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>French Fries</span>
+                <span>250</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Sauté</span>
+                <span>300</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Roast Potatoes</span>
+                <span>300</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Ugali</span>
+                <span>50</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Rice</span>
+                <span>150</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Chapati</span>
+                <span>50</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Chips Masala</span>
+                <span>300</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+    <div class="menu-photo">
+
+        <img
+            src="{{ url_for('static', filename='images/menu-accompaniments2.jpg') }}"
+            alt="Accompaniments served at Lemook Gardens"
+        >
+
+    </div>
+
+</section>
+<!-- Lemook Breakfast -->
+<section class="menu-section menu-section-ivory">
+
+    <div class="menu-photo">
+
+        <img
+            src="{{ url_for('static', filename='images/menu-breakfast.jpg') }}"
+            alt="Breakfast served at Lemook Gardens"
+        >
+
+    </div>
+
+    <div class="menu-content">
+
+        <p class="section-eyebrow">Start your day</p>
+
+        <h2>Lemook Breakfast</h2>
+
+        <div class="menu-list">
+
+            <div class="menu-item">
+                <span>Eggs, Sausage, Roast Potatoes & Tea</span>
+                <span>—</span>
+            </div>
+
+            <div class="menu-item">
+                <span>Toast Bread</span>
+                <span>500</span>
+            </div>
+
+        </div>
+
+        <p class="menu-note">Prices in KSh</p>
+
+    </div>
+
+</section>
+<!-- Dining CTA -->
+<section class="dining-cta">
+
+    <div class="dining-cta-content">
+
+        <p class="section-eyebrow">Enjoy Lemook</p>
+
+        <h2>Come hungry. Stay awhile.</h2>
+
+        <p>
+            Enjoy good food in the peaceful surroundings of Lemook Gardens.
+        </p>
+
+        <a href="/" class="button button-primary">
+            Explore Lemook
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>
+
