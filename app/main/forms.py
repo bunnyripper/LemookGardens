@@ -17,8 +17,8 @@ class AccommodationForm(FlaskForm):
         choices=[
             ('', 'Select a room...'),
             ('bamboo_hut', 'Bamboo Hut'),
-            ('garden_cottage', 'Garden Cottage'),
-            ('family_suite', 'Family Suite')
+            ('outdoor_camping', 'Camping (Outdoor)'),
+            
         ],
         validators=[DataRequired()]
     )
@@ -42,11 +42,16 @@ class EventForm(FlaskForm):
         'Event Type',
         choices=[
             ('', 'Select an event...'),
-            ('wedding', 'Wedding'),
-            ('engagement', 'Engagement'),
-            ('party', 'Party'),
-            ('corporate', 'Corporate Event'),
-            ('other', 'Other')
+            ('wedding', 'Wedding & Celebrations'),
+            ('corporate', 'Corporate Events & Team Building'),
+            ('kids', "Kids Programmes and Activities"),
+            ('family', 'Family Days & Gatherings'),
+            ('community', 'Community and Social Gatherings'),
+            ("graduation","Graduation Ceremonies"),
+            ("private","Private Celebrations"),
+            ("workshop","Workshops and Retreats")
+            
+            
         ],
         validators=[DataRequired()]
     )

@@ -1,3 +1,4 @@
+{% include "main/_popup.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +72,7 @@
         </p>
 
         <h1 id="hero-title">
-            A little farther from the city.<br>
+            A place to slow down.<br>
             A little closer to peace.
         </h1>
 
@@ -142,7 +143,7 @@
             <div class="accommodation-details">
                 <p class="accommodation-type">Accommodation</p>
 
-                <h3>Bamboo Hut</h3>
+                <h3>Bamboo Cottage</h3>
 
                 <p>
                   Peaceful, eco-friendly hut surrounded by nature. Perfect for couples seeking tranquility.
@@ -150,7 +151,7 @@
 
                 <div class="accommodation-footer">
                     <span class="accommodation-price">
-                        From KSh 3500 / night
+                        From KSh 3000 / night
                     </span>
 
                     <a href="/rooms" class="button button-primary">
@@ -167,7 +168,7 @@
 
             <div class="accommodation-image">
                 <img
-                    src="{{ url_for('static', filename='images/cottage-2.jpeg') }}"
+                    src="{{ url_for('static', filename='images/cottage-4.jpeg') }}"
                     alt="Garden Cottage at Lemook Gardens"
                 >
             </div>
@@ -175,7 +176,7 @@
             <div class="accommodation-details">
                 <p class="accommodation-type">Accommodation</p>
 
-                <h3>Garden Cottage</h3>
+                <h3>Camping (Outdoor)</h3>
 
                 <p>
                     Overlooking our lush gardens. Private veranda and extra space for relaxation.
@@ -183,7 +184,6 @@
 
                 <div class="accommodation-footer">
                     <span class="accommodation-price">
-                        From KES 4,200 / night
                     </span>
 
                     <a href="/rooms" class="button button-primary">
@@ -326,6 +326,32 @@
     </div>
 
 </section>
+<section class="activities-preview" id="activities">
+    <div class="activities-preview-content">
+
+        <div class="activities-preview-text">
+            <p class="section-eyebrow">Things to do</p>
+
+            <h2>Make a day of it.</h2>
+
+            <p>
+                Games, family fun, good food and evenings under the stars —
+                Lemook gives you more reasons to stay awhile.
+            </p>
+
+            <a href="{{ url_for('main.activities') }}" class="button button-primary">
+                Explore Activities
+            </a>
+        </div>
+
+        <div class="activities-preview-image">
+            <img
+                src="{{ url_for('static', filename='images/activities/bonfire2.jpg') }}"
+                alt="Guests enjoying activities at Lemook Gardens">
+        </div>
+
+    </div>
+</section>
 <!-- Gallery / Experience -->
 <section id="experience" class="experience-section" aria-labelledby="experience-title">
 
@@ -344,28 +370,28 @@
 
         <div class="experience-photo experience-photo-tall">
             <img
-                src="{{ url_for('static', filename='images/gallery-1.jpg') }}"
+                src="{{ url_for('static', filename='images/gallery-01.jpg') }}"
                 alt="Lemook Gardens"
             >
         </div>
 
         <div class="experience-photo">
             <img
-                src="{{ url_for('static', filename='images/gallery-2.jpg') }}"
+                src="{{ url_for('static', filename='images/gallery-02.jpg') }}"
                 alt="Lemook Gardens experience"
             >
         </div>
 
         <div class="experience-photo">
             <img
-                src="{{ url_for('static', filename='images/gallery-3.jpg') }}"
+                src="{{ url_for('static', filename='images/gallery-03.jpg') }}"
                 alt="Lemook Gardens"
             >
         </div>
 
         <div class="experience-photo experience-photo-wide">
             <img
-                src="{{ url_for('static', filename='images/gallery-4.jpg') }}"
+                src="{{ url_for('static', filename='images/gallery-04.jpg') }}"
                 alt="The gardens at Lemook Gardens"
             >
         </div>

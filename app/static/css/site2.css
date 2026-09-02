@@ -29,65 +29,125 @@ h1,h2,h3{ font-family:'Fraunces', Georgia, serif; font-weight:600; letter-spacin
 .page-header h1{ font-size:30px; color:var(--forest-dark); }
 .page-header-rule{ width:52px; height:2px; background:var(--gold); margin:14px auto 0; }
 
+/* ========================================
+   ACCOMMODATIONS
+======================================== */
+
 .room-cards{
     display:grid;
-    grid-template-columns: 1fr;
-    gap:22px;
-    max-width:1100;
-    margin:28px auto 60px;
-    padding:0 20px;
-}
-@media (min-width:640px){
-    .room-cards{grid-template-columns: repeat(2,1fr);}
-} 
-@media (min-width:1000px){
-    .room-cards{grid-template-columns: repeat(3,1fr);}
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:28px;
+    max-width:1050px;
+    margin:42px auto 90px;
+    padding:0 24px;
 }
 
 .room-card{
     background:var(--white);
-    border-radius:16px;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 2px 16px rgba(30,58,43,0.08);
+    border:1px solid rgba(230,224,208,0.8);
+    box-shadow:0 6px 24px rgba(30,58,43,0.07);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+.room-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 32px rgba(30,58,43,0.13);
+}
+
 .room-card-img{
     width:100%;
-    height:210px;
+    height:270px;
     object-fit:cover;
+    object-position:center;
     display:block;
 }
-.room-card-body{ padding:20px 20px 22px; }
-.room-card-body h3{ font-size:20px; margin-bottom:8px; }
-.room-card-desc{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.55;
-    margin:0 0 16px;
+
+.room-card-body{
+    padding:25px 25px 24px;
 }
+
+.room-card-body h3{
+    font-size:25px;
+    color:var(--forest);
+    margin-bottom:10px;
+}
+
+.room-card-desc{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.7;
+    margin:0 0 22px;
+    max-width:42ch;
+}
+
 .room-card-footer{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:20px;
+    padding-top:18px;
+    border-top:1px solid var(--sand);
 }
+
 .room-card-price{
     font-family:'Fraunces', Georgia, serif;
-    font-size:15px;
-    color:var(--forest-dark);
+    font-size:17px;
+    color:var(--forest);
 }
+
 .room-card-price span{
     font-family:'Public Sans', sans-serif;
     font-size:12px;
     color:var(--ink-soft);
     font-weight:400;
 }
+
 .room-card-link{
-    font-size:13.5px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:9px 0;
+    font-size:14px;
     font-weight:600;
     color:var(--gold);
     text-decoration:none;
+    transition:color 0.2s ease;
 }
-.room-card-link:hover{ text-decoration:underline; }
 
+.room-card-link:hover{
+    color:var(--forest);
+}
+
+
+/* ========================================
+   ACCOMMODATIONS — RESPONSIVE
+======================================== */
+
+@media (max-width:700px){
+
+    .room-cards{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:0 18px;
+        margin-bottom:70px;
+    }
+
+    .room-card-img{
+        height:240px;
+    }
+
+    .room-card-body{
+        padding:22px 20px 21px;
+    }
+
+    .room-card-body h3{
+        font-size:23px;
+    }
+}
 /* ========================================================
    BOOK_ACCOMMODATION.HTML — immersive glass form
    ======================================================== */

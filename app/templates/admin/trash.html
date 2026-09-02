@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <h1>🗑️ Trash</h1>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline">← Back to Dashboard</a>
+</div>
+
+<p class="text-muted">Bookings in the trash will be permanently deleted after 30 days. You can restore them or delete them permanently.</p>
+
+<div class="panel">
+    <div class="panel-body" style="padding: 0;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest</th>
+                    <th>Type</th>
+                    <th>Deleted</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>#{{ booking.id }}</td>
+                    <td>{{ booking.guest_name }}</td>
+                    <td>{{ booking.booking_type|title }}</td>
+                    <td>{{ booking.deleted_at.strftime('%d %b %Y at %H:%M') if booking.deleted_at else 'N/A' }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('admin.restore_booking', booking_id=booking.booking_id) }}" style="display: inline;">
+                            <button type="submit" class="btn btn-sm btn-outline">↩️ Restore</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('admin.permanent_delete', booking_id=booking.booking_id) }}" 
+                              style="display: inline;" 
+                              onsubmit="return confirm('⚠️ Permanently delete this booking? This cannot be undone.');">
+                            <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete Forever</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr class="empty-row">
+                    <td colspan="5">Trash is empty. 🧹</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

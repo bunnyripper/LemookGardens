@@ -24,12 +24,22 @@
             <a href="{{ url_for('admin.dashboard') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.dashboard' }}">
                 {{ icon('dashboard') }} Dashboard
             </a>
+            <a href="{{ url_for('admin.accommodations') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.accommodations' }}">
+                {{ icon('events') }}Accommodations
+             </a>
+            <a href="{{ url_for('admin.admin_events') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.admin_events' }}">
+               {{ icon('events') }} Events
+            </a>
+            <a href="{{ url_for('admin.trash') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.trash' }}">
+                🗑️ Trash
+            </a>
             <a href="{{ url_for('admin.settings') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.settings' }}">
                 {{ icon('settings') }} Settings
             </a>
             <a href="{{ url_for('admin.announcements') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.announcemets' }}">
                 {{ icon('announcement') }} Announcements
             </a>
+
         </div>
 
         <div class="sidebar-foot">

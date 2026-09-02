@@ -1,0 +1,257 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/activities.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<main class="activities-page">
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
+    <section class="activities-hero">
+        <div class="activities-hero-content">
+            <span class="eyebrow hero-eyebrow">Activities</span>
+            <h1>A Day at Lemook</h1>
+            <p>
+                Come for the stay. Stay for everything in between.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ========================================
+         PLAY
+    ========================================= -->
+    <section class="activity-chapter chapter-play">
+
+        <div class="chapter-intro">
+            <span class="chapter-number">01</span>
+            <span class="eyebrow section-eyebrow">Play</span>
+
+            <h2>Let the day begin outdoors.</h2>
+
+            <p>
+                <!-- Short intro about outdoor fun -->
+            </p>
+        </div>
+
+        <!-- Feature: Kids' Playground -->
+        <article class="play-feature activity-playground">
+            <div class="activity-image">
+                <img src="{{ url_for('static', filename='images/activities/playground.jpg') }}" alt="Kids playing at Lemook Gardens">
+            </div>
+            <div class="activity-content">
+                <span class="activity-label">Morning energy</span>
+                <h3>Kids' Playground</h3>
+                <p>
+                    <!-- Description -->
+                </p>
+            </div>
+        </article>
+
+        <!-- Supporting activities -->
+        <div class="play-supporting">
+
+            <article class="activity activity-trampoline">
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/trampoline.jpg') }}" alt="Trampoline at Lemook Gardens">
+                </div>
+                <div class="activity-content">
+                    <span class="activity-label">01</span>
+                    <h3>Trampoline</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+            </article>
+
+            <article class="activity activity-lawn-games">
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/soccer.jpg') }}" alt="Lawn games at Lemook Gardens">
+                </div>
+                <div class="activity-content">
+                    <span class="activity-label">02</span>
+                    <h3>Lawn Games</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+            </article>
+
+            <article class="activity activity-badminton">
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/badminton.jpg') }}" alt="Badminton at Lemook Gardens">
+                </div>
+                <div class="activity-content">
+                    <span class="activity-label">03</span>
+                    <h3>Badminton</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         UNWIND
+    ========================================= -->
+    <section class="activity-chapter chapter-unwind">
+
+        <div class="chapter-intro">
+            <span class="chapter-number">02</span>
+            <span class="eyebrow section-eyebrow">Unwind</span>
+
+            <h2>Slow down. Stay awhile.</h2>
+
+            <p>
+                <!-- Short intro about relaxing/social games -->
+            </p>
+        </div>
+
+
+        <div class="unwind-activities">
+
+            <!-- Indoor Games -->
+            <article class="activity activity-indoor-games">
+
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/pool.jpg') }}" alt="Indoor games at Lemook Gardens">
+                </div>
+
+                <div class="activity-content">
+                    <span class="activity-label">01</span>
+                    <h3>Indoor Games</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- Outdoor Board Games -->
+            <article class="activity activity-board-games">
+
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/chess2.jpg') }}" alt="Outdoor board games at Lemook Gardens">
+                </div>
+
+                <div class="activity-content">
+                    <span class="activity-label">02</span>
+                    <h3>Outdoor Board Games</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         GATHER
+    ========================================= -->
+    <section class="activity-chapter chapter-gather">
+
+        <div class="chapter-intro">
+            <span class="chapter-number">03</span>
+            <span class="eyebrow section-eyebrow">Gather</span>
+
+            <h2>When the sun goes down, come together.</h2>
+
+            <p>
+                <!-- Short intro about evening experiences -->
+            </p>
+        </div>
+
+
+        <!-- KING: BONFIRE -->
+        <article class="activity activity-bonfire">
+
+            <div class="activity-image">
+                <img src="{{ url_for('static', filename='images/activities/campfire.jpg') }}" alt="Bonfire at Lemook Gardens">
+            </div>
+
+            <div class="activity-content">
+                <span class="activity-label">The evening</span>
+                <h3>Bonfire Pit</h3>
+
+                <p>
+                    <!-- Atmospheric description -->
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- Supporting activities -->
+        <div class="gather-supporting">
+
+            <!-- Barbecue -->
+            <article class="activity activity-barbecue">
+
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/choma.jpg') }}" alt="Barbecue at Lemook Gardens">
+                </div>
+
+                <div class="activity-content">
+                    <span class="activity-label">01</span>
+                    <h3>Barbecue Zone</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- Picnic Tables -->
+            <article class="activity activity-picnic">
+
+                <div class="activity-image">
+                    <img src="{{ url_for('static', filename='images/activities/picnic.jpg') }}" alt="Picnic area at Lemook Gardens">
+                </div>
+
+                <div class="activity-content">
+                    <span class="activity-label">02</span>
+                    <h3>Picnic Tables</h3>
+                    <p>
+                        <!-- Description -->
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CTA
+    ======================================== -->
+    <section class="activities-cta">
+
+        <div class="activities-cta-inner">
+            <span class="eyebrow section-eyebrow">Experience Lemook</span>
+
+            <h2>Make a day of it.</h2>
+
+            <p>
+                <!-- Final CTA copy -->
+            </p>
+
+            <a href="/book" class="button button-primary">
+                Plan Your Visit
+            </a>
+        </div>
+
+    </section>
+
+</main>

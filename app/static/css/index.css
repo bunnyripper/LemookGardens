@@ -100,7 +100,7 @@ a{ text-decoration:none; }
             rgba(15,36,26,0.48) 45%,
             rgba(15,36,26,0.28) 100%
         ),
-        url('/static/images/hero.jpg') center/cover no-repeat;
+        url('/static/images/gallery-13.jpg') center/cover no-repeat;
 }
 
 .hero-content{
@@ -886,6 +886,106 @@ a{ text-decoration:none; }
         gap:10px;
     }
 
+}
+/* ========================================
+   ACTIVITIES
+======================================== */
+
+.activities-preview{
+    padding:120px 8vw;
+    background:var(--white);
+}
+
+.activities-preview-content{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+}
+
+.activities-preview-text{
+    max-width:520px;
+}
+
+.activities-preview-text h2{
+    margin-bottom:24px;
+    color:var(--forest);
+    font-size:clamp(36px, 5vw, 54px);
+    line-height:1.15;
+}
+
+.activities-preview-text p{
+    margin:0 0 32px;
+    color:var(--ink-soft);
+    font-size:17px;
+    line-height:1.8;
+}
+
+.activities-preview-image{
+    aspect-ratio:4 / 3;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.activities-preview-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.6s ease;
+}
+
+.activities-preview-image:hover img{
+    transform:scale(1.04);
+}
+
+
+/* ========================================
+   ACTIVITIES — MOBILE
+======================================== */
+
+@media (max-width:800px){
+
+    .activities-preview{
+        padding:80px 8vw;
+    }
+
+    .activities-preview-content{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .activities-preview-text{
+        max-width:100%;
+    }
+
+    .activities-preview-image{
+        aspect-ratio:4 / 3;
+    }
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .activities-preview {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 80px 24px;
+    }
+
+    .activities-preview-content {
+        max-width: 100%;
+    }
+
+    .activities-preview-image {
+        height: 420px;
+    }
 }
 
 /* ================================================

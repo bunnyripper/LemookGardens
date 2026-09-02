@@ -1,14 +1,20 @@
 from flask import Blueprint,render_template,redirect,url_for,flash,request,current_app
 from datetime import datetime
 from .forms import AccommodationForm, EventForm
-from app.models import Booking
+from app.models import Booking,Announcement
 from app.extensions import db , limiter
 from app.utils import send_whatsapp_booking_alert
 from app.main import bp
 
 @bp.route("/")
 def index():
-    return render_template("main/index.html")
+    popup = Announcement.query.filter_by(is_active=True, is_popup=True)\
+        .filter(Announcement.starts_at <= datetime.utcnow(), Announcement.ends_at >= datetime.utcnow())\
+        .order_by(Announcement.created_at.desc()).first()
+    return render_template('main/index.html', popup=popup)
+@bp.route("/activities")
+def activities():
+    return render_template("main/activities.html")
 @bp.route("/dining")
 def dining():
     return render_template("main/dining.html")

@@ -56,17 +56,40 @@ def logout():
 
 @bp.route("/dashboard")
 @login_required
-def dashboard():
-    bookings=Booking.query.filter_by(deleted=False).order_by(Booking.created_at.desc()).all()
+def dashboard(): 
+    pending_count=Booking.query.filter_by(status="pending",deleted=False).count()
+    confirmed_count=Booking.query.filter_by(status="confirmed",deleted=False).count()
+    cancelled_count=Booking.query.filter_by(status="cancelled",deleted=False).count()
+    completed_count=Booking.query.filter_by(status="completed",deleted=False).count()
+    total_count=Booking.query.filter_by(deleted=False).count()
     
-    pending_count=Booking.query.filter_by(status="pending").count()
-    confirmed_count=Booking.query.filter_by(status="confirmed").count()
-    cancelled_count=Booking.query.filter_by(status="cancelled").count()
-    completed_count=Booking.query.filter_by(status="completed").count()
+    recent = Booking.query.filter_by(deleted=False).order_by(Booking.created_at.desc()).limit(5).all()
     
-    return render_template("admin/dashboard.html",bookings=bookings,
-                           pending_count=pending_count,confirmed_count=confirmed_count,
-                           cancelled_count=cancelled_count,completed_count=completed_count)
+    return render_template('admin/dashboard.html',
+                         pending_count=pending_count,
+                         confirmed_count=confirmed_count,
+                         cancelled_count=cancelled_count,
+                         completed_count=completed_count,
+                         total_count=total_count,
+                         recent=recent)
+
+    
+  
+    
+
+@bp.route("/accommodations")
+@login_required
+def accommodations():
+    bookings=Booking.query.filter_by(booking_type="accommodation",deleted=False)\
+        .order_by(Booking.created_at.desc()).all()
+    return render_template("admin/accommodations.html",bookings=bookings)
+
+@bp.route("/events")
+@login_required
+def admin_events():
+    bookings=Booking.query.filter_by(booking_type="event",deleted=False)\
+        .order_by(Booking.created_at.desc()).all()
+    return render_template("admin/events.html",bookings=bookings)
     
 @bp.route("/booking/<int:booking_id>")
 @login_required
@@ -107,16 +130,39 @@ def settings():
     settings = {s.key: s.value for s in Setting.query.all()}
     return render_template('admin/settings.html', settings=settings)
 
-@bp.route("/booking/<int:booking_id>/delete",methods=["POST"])
+@bp.route('/booking/<int:booking_id>/soft-delete', methods=['POST'])
 @login_required
-def delete_bookings(booking_id):
-    booking=Booking.query.get_or_404(booking_id)
-    booking.deleted=True
-    booking.deleted_at=datetime.utcnow()
+def soft_delete_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    booking.deleted = True
+    booking.deleted_at = datetime.utcnow() 
     db.session.commit()
-    
-    flash(f"Booking #{booking.booking_id} has been deleted.","warning")
-    return redirect(url_for("admin.dashboard"))
+    flash(f'Booking #{booking.booking_id} moved to trash.', 'warning')
+    return redirect(request.referrer or url_for('admin.dashboard'))
+@bp.route('/trash')
+@login_required
+def trash():
+    deleted = Booking.query.filter(Booking.deleted_at.isnot(None)).all()
+    return render_template('admin/trash.html', bookings=deleted)
+
+@bp.route('/booking/<int:booking_id>/restore', methods=['POST'])
+@login_required
+def restore_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    booking.deleted=False
+    booking.deleted_at = None
+    db.session.commit()
+    flash('Booking restored!', 'success')
+    return redirect(url_for('admin.trash'))
+
+@bp.route('/booking/<int:booking_id>/permanent-delete', methods=['POST'])
+@login_required
+def permanent_delete(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    db.session.delete(booking)
+    db.session.commit()
+    flash('Booking permanently deleted.', 'warning')
+    return redirect(url_for('admin.trash'))
 @bp.route("/announcement")
 @login_required
 def announcements():
@@ -137,13 +183,19 @@ def new_announcements():
                 file.save(file_path)
             else:
                 flash("Invalid file type.Please upload an image","danger")
-                return render_template("admin/announcement_form.html",form=form,title="New Announcement")
+                return render_template("admin/announcements_form.html",form=form,title="New Announcement")
         announcement=Announcement(
             title=form.title.data,
             content=form.content.data,
             image_filename=filename,
             is_active=form.is_active.data
         )
+        if request.method == 'POST':
+            starts_at = request.form.get('starts_at')
+        if starts_at:
+            starts_at = datetime.strptime(starts_at, '%Y-%m-%dT%H:%M')
+        else:
+            starts_at = None
         db.session.add(announcement)
         db.session.commit()
         flash("Announcement created succesfully!","Success")
@@ -165,6 +217,12 @@ def edit_announcement(id):
         announcement.image=form.image.data
         announcement.is_active=form.is_active.data
         announcement.updated_at=datetime.utcnow()
+        if request.method == 'POST':
+                starts_at = request.form.get('starts_at')
+                if starts_at:
+                    starts_at = datetime.strptime(starts_at, '%Y-%m-%dT%H:%M')
+                else:
+                    starts_at = None
         db.session.commit()
         flash("Announcement updated successfully!","success")
         return redirect(url_for("admin.announcements"))

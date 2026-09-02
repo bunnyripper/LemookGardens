@@ -1,0 +1,51 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <h1>{{ icon('events') }} Event Bookings</h1>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline">← Back</a>
+</div>
+
+<div class="panel">
+    <div class="panel-body" style="padding: 0;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest</th>
+                    <th>Event Type</th>
+                    <th>Event Date</th>
+                    <th>Guests</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>#{{ booking.id }}</td>
+                    <td>{{ booking.guest_name }}</td>
+                    <td>{{ booking.event_type|replace('_', ' ')|title }}</td>
+                    <td>{{ booking.check_in.strftime('%d %b %Y') }}</td>
+                    <td>{{ booking.guest_count }}</td>
+                    <td><span class="status status-{{ booking.status }}">{{ booking.status|title }}</span></td>
+                    <td><a href="{{ url_for('admin.booking_detail', booking_id=booking.booking_id) }}">View</a></td>
+                    <td>
+                    <a href="{{ url_for('admin.booking_detail', booking_id=booking.booking_id) }}" class="btn btn-sm btn-outline">View</a>
+                    <form method="POST" action="{{ url_for('admin.soft_delete_booking', booking_id=booking.booking_id) }}" 
+                    style="display: inline;" 
+                    onsubmit="return confirm('Move this booking to trash?');">
+                     <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete</button>
+                    </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr class="empty-row">
+                    <td colspan="7">No event bookings yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

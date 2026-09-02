@@ -23,7 +23,9 @@ class Booking(db.Model):
     deleted=db.Column(db.Boolean,default=False)
     deleted_at=db.Column(db.DateTime,nullable=True)
     
-    
+    @property
+    def is_deleted(self):
+        return self.deleted_at is not None
     
     def __repr__(self):
         return f"<Booking {self.id} - {self.guest_name}"
@@ -39,5 +41,32 @@ class Announcement(db.Model):
     content = db.Column(db.Text, nullable=False)
     image_filename = db.Column(db.String(200), nullable=True)  
     is_active = db.Column(db.Boolean, default=True)
+    is_popup = db.Column(db.Boolean, default=False)  
+    starts_at = db.Column(db.DateTime, nullable=True)  
+    ends_at = db.Column(db.DateTime, nullable=True)    
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    @property
+    def is_visible(self):
+        """Check if announcement is currently visible."""
+        if not self.is_active:
+            return False
+        now = datetime.utcnow()
+        if self.starts_at and self.starts_at > now:
+            return False
+        if self.ends_at and self.ends_at < now:
+            return False
+        return True
+    
+    
+class Events(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    title=db.Column(db.String(100),nullable=False)
+    description=db.Column(db.Text,nullable=False)
+    event_type=db.Column(db.String(50),nullable=False)
+    image=db.Column(db.String(200),nullable=False)
+    is_active=db.Column(db.Boolean,default=True)
+    created_at=db.Column(db.DateTime,default=datetime.utcnow)
+    updated_at=db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
+    
