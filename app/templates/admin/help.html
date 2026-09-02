@@ -1,0 +1,65 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+    <h1>{{ icon('help') }} Help & Support</h1>
+    <p style="color: var(--ink-soft); margin-bottom: 32px;">Something broken? Here's what to do.</p>
+
+    <!-- Contact -->
+    <div class="panel" style="margin-bottom: 24px; border-left: 4px solid var(--gold);">
+        <div class="panel-body">
+            <h2 style="margin: 0 0 8px 0;">{{ icon('phone') }} Contact Support</h2>
+            <p style="margin: 0; font-size: 15px;">
+                <strong>Phone:</strong> <a href="tel:+254791257217" style="color: var(--gold); text-decoration: none;">+254 791 257 217</a><br>
+                <strong>Email:</strong> <a href="mailto:gabrielkipropbunny@gmail.com" style="color: var(--gold); text-decoration: none;">gabrielkipropbunny@gmail.com</a>
+            </p>
+            <p style="margin-top: 12px; font-size: 13px; color: var(--ink-soft);">
+                 Response time: Usually within 2 hours
+            </p>
+        </div>
+    </div>
+
+    <!-- Common Issues -->
+    <div class="panel" style="margin-bottom: 24px;">
+        <div class="panel-head">
+            <h2>{{ icon('fix') }} Common Issues & Fixes</h2>
+        </div>
+        <div class="panel-body">
+            <div style="margin-bottom: 16px;">
+                <h3 style="font-size: 14px; margin: 0 0 4px 0; color: var(--forest-dark);">Can't log in?</h3>
+                <p style="margin: 0; font-size: 13px; color: var(--ink-soft);">Reset your password by contacting support. Admin credentials are stored securely.</p>
+            </div>
+            <div style="margin-bottom: 16px;">
+                <h3 style="font-size: 14px; margin: 0 0 4px 0; color: var(--forest-dark);">Bookings not showing?</h3>
+                <p style="margin: 0; font-size: 13px; color: var(--ink-soft);">Check the Trash bin — they might have been soft-deleted. If still missing, contact support.</p>
+            </div>
+            <div style="margin-bottom: 16px;">
+                <h3 style="font-size: 14px; margin: 0 0 4px 0; color: var(--forest-dark);">Email notifications not sending?</h3>
+                <p style="margin: 0; font-size: 13px; color: var(--ink-soft);">Check your SMTP settings in the environment variables. Contact support for help.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 14px; margin: 0 0 4px 0; color: var(--forest-dark);">Website loading slowly?</h3>
+                <p style="margin: 0; font-size: 13px; color: var(--ink-soft);">Clear your browser cache or try a different browser. Contact support if the issue persists.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="panel">
+        <div class="panel-head">
+            <h2>{{ icon('bolt') }} Quick Actions</h2>
+        </div>
+        <div class="panel-body" style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="{{ url_for('admin.dashboard') }}" class="btn">{{ icon('dashboard') }} Dashboard</a>
+            <a href="{{ url_for('admin.accommodations') }}" class="btn btn-outline">{{ icon('events') }} Accommodations</a>
+            <a href="{{ url_for('admin.admin_events') }}" class="btn btn-outline">{{ icon('events') }} Events</a>
+            <a href="{{ url_for('admin.trash') }}" class="btn btn-outline">{{ icon('trash') }} Trash</a>
+        </div>
+    </div>
+
+    <!-- Footer note -->
+    <p style="text-align: center; margin-top: 32px; font-size: 12px; color: var(--ink-soft);">
+        Last updated: September 2026 · Built for Lemook Gardens
+    </p>
+</div>
+{% endblock %}

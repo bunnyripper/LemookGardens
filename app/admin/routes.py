@@ -250,3 +250,7 @@ def toggle_announcement(id):
     status="activated" if announcement.is_active else "deactivated"
     flash(f"Annoncement {status}!","Success")
     return redirect(url_for("admin.announcements"))
+@bp.route('/help')
+@login_required
+def help():
+    return render_template('admin/help.html')

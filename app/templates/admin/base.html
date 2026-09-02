@@ -31,20 +31,27 @@
                {{ icon('events') }} Events
             </a>
             <a href="{{ url_for('admin.trash') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.trash' }}">
-                🗑️ Trash
-            </a>
-            <a href="{{ url_for('admin.settings') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.settings' }}">
-                {{ icon('settings') }} Settings
+                {{ icon('trash') }} Trash
             </a>
             <a href="{{ url_for('admin.announcements') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.announcemets' }}">
                 {{ icon('announcement') }} Announcements
             </a>
+            
+            <a href="{{ url_for('admin.settings') }}" class="nav-item {{ 'active' if request.endpoint == 'admin.settings' }}">
+                {{ icon('settings') }} Settings
+            </a>
+            
 
         </div>
 
         <div class="sidebar-foot">
             <a href="{{ url_for('main.index') }}">{{ icon('back', 'icon') }} View site</a>
             <a href="{{ url_for('admin.logout') }}" style="margin-top:10px;">{{ icon('logout', 'icon') }} Log out</a>
+        </div>
+        <div class="sidebar-foot">
+         <a href="{{ url_for('admin.help') }}" class="nav-item">
+         {{ icon('help') }} Help & Support
+         </a>
         </div>
     </div>
 
