@@ -11,7 +11,7 @@
         content="Discover Lemook Gardens — accommodation, events and memorable experiences in a beautiful natural setting."
     >
 
-    <!-- Google Fonts -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,12 +20,12 @@
     >
 
      <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-     <script src="{{url_for("static",filename="js/index.js")}}"defer></script>
+     <script src="{{url_for('static',filename="js/index.js")}}"defer></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+   
     <header class="site-header">
         <nav class="navbar" aria-label="Main navigation">
 
@@ -62,7 +62,7 @@
 
     <main>
 
-  <!-- Hero -->
+  
 <section class="hero" aria-labelledby="hero-title">
 
     <div class="hero-content">
@@ -95,7 +95,7 @@
 </section>
 
 
-        <!-- Introduction -->
+      
 <section id="introduction" class="intro-section" aria-labelledby="intro-title">
     <div class="intro-content">
 
@@ -114,7 +114,7 @@
 </section>
 
 
-<!-- Accommodation -->
+
 <section id="accommodation" class="accommodation-section" aria-labelledby="accommodation-title">
 
     <div class="section-heading">
@@ -130,7 +130,7 @@
 
     <div class="accommodation-featured">
 
-        <!-- Bamboo Hut -->
+       
         <article class="accommodation-feature">
 
             <div class="accommodation-image">
@@ -163,7 +163,7 @@
         </article>
 
 
-        <!-- Garden Cottage -->
+       
         <article class="accommodation-feature">
 
             <div class="accommodation-image">
@@ -202,7 +202,7 @@
     </a>
 
 </section>
-<!-- Dining -->
+
 <section id="dining" class="dining-section" aria-labelledby="dining-title">
 
     <div class="section-heading">
@@ -251,7 +251,7 @@
 </section>
 
 
-<!-- Events -->
+
 <section id="events" class="events-section" aria-labelledby="events-title">
 
     <div class="section-heading">
@@ -352,7 +352,7 @@
 
     </div>
 </section>
-<!-- Gallery / Experience -->
+
 <section id="experience" class="experience-section" aria-labelledby="experience-title">
 
     <div class="section-heading">
@@ -404,7 +404,7 @@
     </a>
 
 </section>
-<!-- About -->
+
 <section id="about" class="about-section" aria-labelledby="about-title">
 
     <div class="about-content">
@@ -481,7 +481,7 @@
     </div>
 
 </section>
-<!-- Final CTA -->
+
 <section class="final-cta" aria-labelledby="final-cta-title">
 
     <div class="final-cta-content">
@@ -505,8 +505,7 @@
 
 
 
-    <!-- Footer -->
-<!-- Footer -->
+
 <footer class="site-footer">
 
     <div class="footer-main">
@@ -600,7 +599,7 @@
 </footer>
 
 
-    <script src="js/index.js"></script>
+    <script src="{{url_for('static',filename="js/index.js")}}"defer></script>
 
 </body>
 </html>

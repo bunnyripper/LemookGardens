@@ -76,6 +76,8 @@ a{ text-decoration:none; }
     border:none;
     cursor:pointer;
     padding:4px;
+    position: relative;
+    z-index: 1001;
 }
 .menu-toggle span{
     width:22px; height:2px;

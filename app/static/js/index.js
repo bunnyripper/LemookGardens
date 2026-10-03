@@ -1,3 +1,14 @@
+const menuToggle=document.querySelector(".menu-toggle");
+const navlinks=document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", ()=> {
+    navlinks.classList.toggle("is-open");
+
+    const isOpen = navlinks.classList.contains("is-open");
+    menuToggle.setAttribute("aria-expanded",isOpen);
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const diningSlides = document.querySelectorAll(".dining-slide");
